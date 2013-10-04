@@ -1,0 +1,35 @@
+{
+  "author": {
+    "name": "Developmentseed",
+    "email": "info@developmentseed.org",
+    "url": "http://developmentseed.org"
+  },
+  "name": "bones-passport",
+  "description": "Integrate the passport authentication framework into Bones.",
+  "version": "0.0.1",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "express": "2.5.11",
+    "passport": "",
+    "passport-dummy": "0.0.1",
+    "passport-oauth": "0.1.1",
+    "passport-local": "0.1.0",
+    "passport-twitter": "0.1.0"
+  },
+  "devDependencies": {},
+  "_id": "bones-passport@0.0.1",
+  "optionalDependencies": {},
+  "_engineSupported": true,
+  "_npmVersion": "1.1.16",
+  "_nodeVersion": "v0.6.15",
+  "_defaultsLoaded": true,
+  "dist": {
+    "shasum": "5db7a2f72cdae304a2eb821599a09854729eb62a"
+  },
+  "_from": "https://github.com/dunice-hmelev/bones-passport/tarball/oxhim",
+  "readme": "Bones Passport\n--------------\nProvides a pluggable authentication middleware server that uses\nthe [Passport](https://github.com/jaredhanson/passport) library.\n\nSupports dummy, twitter, oauth1 and oauth2 authentication strategies.\n\n### Usage\n\nMount any of the supported authentication strategies in your bones middleware\nserver :\n\n\n    // filename: servers/Middleware.bones\n    var express = require('express');\n\n    servers.Middleware.augment({\n        initialize: function(parent, app) {\n            parent.call(this, app);\n            // session support is required, and is the responsibility\n            // of your application to enable.\n            this.use(express.session({ secret: 'secret' }));\n\n            this.use(new servers.PassportTwitter(app));\n        }\n    });\n\n\nConfiguration settings for the authentication strategies are stored in a \n`passport.json` file in the root of your application, for example: \n\n\n    {\n        \"twitter\" : {\n            \"callbackURL\": \"http://mydomain:3000/auth/twitter/callback\",\n            \"consumerKey\": \"get from dev.twitter.com\",\n            \"consumerSecret\": \"get from div.twitter.com\"\n        }\n    }\n\n\nYou can initiate login by directing your user to `/auth/twitter` in this case,\nalthough each authentication strategy has it's own url, such as `/auth/dummy`\nand `/auth/oauth2` for those relevant strategies.\n\nBones-passport has a basic User model that will be instanced into `req.user`\nby passport when a user has been logged in, and you can test for a logged in\nuser with `req.isAuthenticated`.\n\n#### Authors\n\n- [Adrian Rossouw](http://github.com/Vertice)\n\n",
+  "readmeFilename": "readme.md",
+  "_resolved": "https://github.com/dunice-hmelev/bones-passport/tarball/oxhim"
+}
